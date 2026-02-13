@@ -1,18 +1,18 @@
-<x-layouts.app title="Biz haqimizda">
+<x-layouts.app title="{{ __('messages.about') }}">
     <section class="py-16">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-14">
-                <h1 class="text-3xl font-bold text-gray-900 mb-3">Biz haqimizda</h1>
+                <h1 class="text-3xl font-bold text-gray-900 mb-3">{{ __('messages.about') }}</h1>
                 <p class="text-gray-500 max-w-xl mx-auto">
-                    TurizmApp — O'zbekistonning ishonchli turizm platformasi. Biz sayohatchilar uchun eng yaxshi tajribani yaratamiz.
+                    {{ __('messages.about_desc') }}
                 </p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
                 @foreach([
-                    ['icon' => 'globe', 'title' => '50+ yo\'nalishlar', 'desc' => 'Dunyoning eng go\'zal joylariga sayohat imkoniyatlari'],
-                    ['icon' => 'shield-check', 'title' => 'Ishonchli xizmat', 'desc' => '5 yillik tajriba va 500+ mamnun mijozlar'],
-                    ['icon' => 'sparkles', 'title' => 'Shaxsiy tur', 'desc' => 'O\'zingiz xohlagan turni yarating, biz amalga oshiramiz'],
+                    ['icon' => 'globe', 'title' => __('messages.about_destinations'), 'desc' => __('messages.about_destinations_desc')],
+                    ['icon' => 'shield-check', 'title' => __('messages.about_trusted'), 'desc' => __('messages.about_trusted_desc')],
+                    ['icon' => 'sparkles', 'title' => __('messages.about_custom'), 'desc' => __('messages.about_custom_desc')],
                 ] as $feature)
                     <div class="bg-white rounded-xl border border-gray-200 p-6">
                         <div class="w-10 h-10 bg-blue-50 rounded-lg flex items-center justify-center mb-4">
@@ -25,12 +25,12 @@
             </div>
 
             <div class="bg-white rounded-xl border border-gray-200 p-8">
-                <h2 class="text-xl font-bold text-gray-900 mb-4">Bizning missiyamiz</h2>
+                <h2 class="text-xl font-bold text-gray-900 mb-4">{{ __('messages.our_mission') }}</h2>
                 <p class="text-gray-600 leading-relaxed mb-4">
-                    Biz har bir O'zbekistonlik sayohatchi uchun dunyoni ochiq va qulay qilishni maqsad qilganmiz. Bizning platformamiz orqali siz tayyor tur paketlarni ko'rib, tanlab, band qilishingiz yoki o'zingizga mos shaxsiy sayohat rejasini yaratishingiz mumkin.
+                    {{ __('messages.mission_text_1') }}
                 </p>
                 <p class="text-gray-600 leading-relaxed">
-                    Jamoamiz har bir mijozga individual yondashuv bilan xizmat ko'rsatadi. Sizning sayohatingiz unutilmas bo'lishi uchun biz barcha tafsilotlarni o'ylab chiqamiz.
+                    {{ __('messages.mission_text_2') }}
                 </p>
             </div>
         </div>

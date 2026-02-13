@@ -46,6 +46,8 @@ class TourPackage extends Model
             'status' => TourPackageStatusEnum::class,
             'featured' => 'boolean',
             'gallery' => 'array',
+            'title' => 'array',
+            'description' => 'array',
         ];
     }
 
@@ -101,5 +103,17 @@ class TourPackage extends Model
     public function isAvailable(): bool
     {
         return $this->status === TourPackageStatusEnum::Active;
+    }
+
+    public function getTitleAttribute($value): string
+    {
+        $titles = is_string($value) ? json_decode($value, true) : $value;
+        return $titles[app()->getLocale()] ?? $titles['uz'] ?? '';
+    }
+
+    public function getDescriptionAttribute($value): string
+    {
+        $descriptions = is_string($value) ? json_decode($value, true) : $value;
+        return $descriptions[app()->getLocale()] ?? $descriptions['uz'] ?? '';
     }
 }

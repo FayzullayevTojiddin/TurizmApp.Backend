@@ -2,20 +2,20 @@
 
 namespace App\Filament\Resources\TourPackages\Schemas;
 
+use App\Enums\Language;
 use App\Enums\Tour\MealPlanEnum;
-use App\Enums\Tour\TourItemTypeEnum;
 use App\Enums\Tour\TourPackageStatusEnum;
 use Filament\Forms\Components\Checkbox;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\FileUpload;
-use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TagsInput;
-use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Components\Grid;
 use Filament\Schemas\Components\Section;
+use Filament\Schemas\Components\Tabs;
+use Filament\Schemas\Components\Tabs\Tab;
 use Filament\Schemas\Schema;
 use Illuminate\Support\Str;
 
@@ -25,43 +25,57 @@ class TourPackageForm
     {
         return $schema->components([
             Grid::make(3)->schema([
+
                 Grid::make(1)->schema([
-                    self::generalSection(),
+                    self::translationsSection(),
                     self::durationSection(),
                     self::pricingSection(),
                     self::servicesSection(),
-                    self::itemsSection(),
                 ])->columnSpan(2),
 
                 Grid::make(1)->schema([
                     self::statusSection(),
                     self::mediaSection(),
                 ])->columnSpan(1),
-            ])
-            ->columnSpanFull(),
+
+            ])->columnSpanFull(),
         ]);
     }
 
-    private static function generalSection(): Section
+    private static function translationsSection(): Section
     {
         return Section::make('Umumiy ma\'lumotlar')
             ->schema([
-                TextInput::make('title')
-                    ->label('Nomi')
-                    ->required()
-                    ->maxLength(255)
-                    ->live(onBlur: true)
-                    ->afterStateUpdated(fn ($set, ?string $state) => $set('slug', Str::slug($state))),
+                Tabs::make('Tillar')
+                    ->tabs(
+                        collect(Language::cases())->map(fn (Language $lang) =>
+                            Tab::make($lang->label())
+                                ->badge($lang->flag())
+                                ->schema([
+                                    TextInput::make("title.{$lang->value}")
+                                        ->label('Nomi')
+                                        ->required()
+                                        ->maxLength(255)
+                                        ->live(onBlur: true)
+                                        ->afterStateUpdated(function ($set, ?string $state) use ($lang) {
+                                            if ($lang === Language::UZ) {
+                                                $set('slug', Str::slug($state));
+                                            }
+                                        }),
+                                    RichEditor::make("description.{$lang->value}")
+                                        ->label('Tavsif')
+                                        ->required(),
+                                ])
+                        )
+                        ->toArray()
+                    )
+                    ->columnSpanFull(),
 
                 TextInput::make('slug')
                     ->label('Slug')
                     ->required()
                     ->unique(ignoreRecord: true)
                     ->maxLength(255),
-
-                RichEditor::make('description')
-                    ->label('Tavsif')
-                    ->columnSpanFull(),
             ]);
     }
 
@@ -73,18 +87,15 @@ class TourPackageForm
                     DatePicker::make('start_date')
                         ->label('Boshlanish sanasi')
                         ->required(),
-
                     DatePicker::make('end_date')
                         ->label('Tugash sanasi')
                         ->required()
                         ->afterOrEqual('start_date'),
-
                     TextInput::make('duration_days')
                         ->label('Kunlar soni')
                         ->numeric()
                         ->required()
                         ->minValue(1),
-
                     TextInput::make('duration_nights')
                         ->label('Tunlar soni')
                         ->numeric()
@@ -104,7 +115,6 @@ class TourPackageForm
                         ->numeric()
                         ->required()
                         ->prefix('$'),
-
                     TextInput::make('discount_percent')
                         ->label('Chegirma (%)')
                         ->numeric()
@@ -112,20 +122,17 @@ class TourPackageForm
                         ->minValue(0)
                         ->maxValue(100)
                         ->suffix('%'),
-
                     TextInput::make('min_people')
                         ->label('Min. odamlar')
                         ->numeric()
                         ->default(1)
                         ->minValue(1),
-
                     TextInput::make('max_people')
                         ->label('Maks. odamlar')
                         ->numeric()
                         ->required()
                         ->minValue(1),
                 ]),
-
                 Select::make('meal_plan')
                     ->label('Ovqatlanish rejasi')
                     ->options(MealPlanEnum::options()),
@@ -140,68 +147,10 @@ class TourPackageForm
                     ->label('Kiritilgan xizmatlar')
                     ->placeholder('Xizmat nomini yozing...')
                     ->suggestions(['Aviabilet', 'Mehmonxona', 'Transfer', 'Sug\'urta', 'Gid xizmati', 'Viza']),
-
                 TagsInput::make('excluded_services')
                     ->label('Kiritilmagan xizmatlar')
                     ->placeholder('Xizmat nomini yozing...')
                     ->suggestions(['Shaxsiy xarajatlar', 'Qo\'shimcha ekskursiya', 'Minibar']),
-            ]);
-    }
-
-    private static function itemsSection(): Section
-    {
-        return Section::make('Sayohat dasturi')
-            ->description('Kun bo\'yicha dastur elementlarini qo\'shing')
-            ->schema([
-                Repeater::make('items')
-                    ->label('')
-                    ->relationship()
-                    ->orderColumn('order')
-                    ->defaultItems(0)
-                    ->collapsible()
-                    ->cloneable()
-                    ->reorderable()
-                    ->itemLabel(fn (array $state): ?string =>
-                        ($state['day_number'] ? $state['day_number'] . '-kun: ' : '') .
-                        ($state['title'] ?? 'Yangi element')
-                    )
-                    ->schema([
-                        Grid::make(3)->schema([
-                            Select::make('type')
-                                ->label('Turi')
-                                ->options(TourItemTypeEnum::options())
-                                ->required(),
-
-                            TextInput::make('title')
-                                ->label('Nomi')
-                                ->required()
-                                ->maxLength(255),
-
-                            TextInput::make('day_number')
-                                ->label('Kun raqami')
-                                ->numeric()
-                                ->minValue(1)
-                                ->placeholder('1'),
-                        ]),
-
-                        Textarea::make('description')
-                            ->label('Tavsif')
-                            ->rows(2)
-                            ->columnSpanFull(),
-
-                        Grid::make(2)->schema([
-                            FileUpload::make('cover_image')
-                                ->label('Rasm')
-                                ->image()
-                                ->directory('tour-items'),
-
-                            FileUpload::make('gallery')
-                                ->label('Galereya')
-                                ->image()
-                                ->multiple()
-                                ->directory('tour-items/gallery'),
-                        ]),
-                    ]),
             ]);
     }
 
@@ -214,7 +163,6 @@ class TourPackageForm
                     ->options(TourPackageStatusEnum::options())
                     ->default(TourPackageStatusEnum::Active->value)
                     ->required(),
-
                 Checkbox::make('featured')
                     ->label('Tavsiya etilgan'),
             ]);
@@ -228,7 +176,6 @@ class TourPackageForm
                     ->label('Muqova rasm')
                     ->image()
                     ->directory('tour-packages'),
-
                 FileUpload::make('gallery')
                     ->label('Galereya')
                     ->image()

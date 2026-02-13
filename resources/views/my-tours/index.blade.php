@@ -1,13 +1,13 @@
-<x-layouts.app title="Mening turlarim">
+<x-layouts.app title="{{ __('messages.my_tours') }}">
     <section class="py-10">
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between mb-8">
                 <div>
-                    <h1 class="text-2xl font-bold text-gray-900">Mening turlarim</h1>
-                    <p class="text-sm text-gray-500 mt-1">Siz yaratgan barcha turlar</p>
+                    <h1 class="text-2xl font-bold text-gray-900">{{ __('messages.my_tours') }}</h1>
+                    <p class="text-sm text-gray-500 mt-1">{{ __('messages.my_tours_desc') }}</p>
                 </div>
                 <a href="{{ route('my-tours.create') }}" class="inline-flex items-center gap-2 bg-blue-600 text-white font-medium px-4 py-2 rounded-lg hover:bg-blue-700 transition text-sm">
-                    <i data-lucide="plus" class="w-4 h-4"></i> Yangi tur
+                    <i data-lucide="plus" class="w-4 h-4"></i> {{ __('messages.new_tour') }}
                 </a>
             </div>
 
@@ -28,8 +28,8 @@
                                 </div>
                                 <div class="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-gray-500">
                                     <span class="flex items-center gap-1"><i data-lucide="calendar" class="w-3.5 h-3.5"></i> {{ $tour->start_date->format('d.m.Y') }} — {{ $tour->end_date->format('d.m.Y') }}</span>
-                                    <span class="flex items-center gap-1"><i data-lucide="clock" class="w-3.5 h-3.5"></i> {{ $tour->duration_days }} kun / {{ $tour->duration_nights }} tun</span>
-                                    <span class="flex items-center gap-1"><i data-lucide="users" class="w-3.5 h-3.5"></i> {{ $tour->totalPeople() }} kishi</span>
+                                    <span class="flex items-center gap-1"><i data-lucide="clock" class="w-3.5 h-3.5"></i> {{ $tour->duration_days }} {{ __('messages.days') }} / {{ $tour->duration_nights }} {{ __('messages.nights') }}</span>
+                                    <span class="flex items-center gap-1"><i data-lucide="users" class="w-3.5 h-3.5"></i> {{ $tour->totalPeople() }} {{ __('messages.person') }}</span>
                                     @if($tour->final_price)
                                         <span class="font-medium text-emerald-600">${{ number_format($tour->final_price, 0) }}</span>
                                     @elseif($tour->estimated_price > 0)
@@ -39,13 +39,13 @@
                             </div>
                             <div class="flex items-center gap-1 shrink-0">
                                 <a href="{{ route('my-tours.show', $tour) }}" class="inline-flex items-center gap-1.5 text-sm text-gray-600 hover:text-blue-600 font-medium px-3 py-1.5 rounded-lg hover:bg-gray-50 transition">
-                                    <i data-lucide="eye" class="w-3.5 h-3.5"></i> Ko'rish
+                                    <i data-lucide="eye" class="w-3.5 h-3.5"></i> {{ __('messages.view') }}
                                 </a>
                                 @if($tour->isDraft())
                                     <a href="{{ route('my-tours.edit', $tour) }}" class="inline-flex items-center gap-1.5 text-sm text-gray-600 hover:text-gray-900 font-medium px-3 py-1.5 rounded-lg hover:bg-gray-50 transition">
-                                        <i data-lucide="pencil" class="w-3.5 h-3.5"></i> Tahrirlash
+                                        <i data-lucide="pencil" class="w-3.5 h-3.5"></i> {{ __('messages.edit') }}
                                     </a>
-                                    <form method="POST" action="{{ route('my-tours.destroy', $tour) }}" onsubmit="return confirm('Ishonchingiz komilmi?')">
+                                    <form method="POST" action="{{ route('my-tours.destroy', $tour) }}" onsubmit="return confirm('{{ __('messages.confirm_delete') }}')">
                                         @csrf @method('DELETE')
                                         <button type="submit" class="inline-flex items-center gap-1.5 text-sm text-red-500 hover:text-red-700 font-medium px-3 py-1.5 rounded-lg hover:bg-red-50 transition">
                                             <i data-lucide="trash-2" class="w-3.5 h-3.5"></i>
@@ -62,10 +62,10 @@
                     <div class="w-16 h-16 bg-gray-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
                         <i data-lucide="map" class="w-8 h-8 text-gray-300"></i>
                     </div>
-                    <h3 class="text-base font-semibold text-gray-900 mb-1">Hali turlar yo'q</h3>
-                    <p class="text-sm text-gray-500 mb-5">Birinchi turingizni yarating</p>
+                    <h3 class="text-base font-semibold text-gray-900 mb-1">{{ __('messages.no_tours') }}</h3>
+                    <p class="text-sm text-gray-500 mb-5">{{ __('messages.create_first_tour') }}</p>
                     <a href="{{ route('my-tours.create') }}" class="inline-flex items-center gap-2 bg-blue-600 text-white font-medium px-5 py-2.5 rounded-lg hover:bg-blue-700 transition text-sm">
-                        <i data-lucide="plus" class="w-4 h-4"></i> Tur yaratish
+                        <i data-lucide="plus" class="w-4 h-4"></i> {{ __('messages.create_tour') }}
                     </a>
                 </div>
             @endif

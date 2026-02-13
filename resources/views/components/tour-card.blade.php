@@ -20,7 +20,7 @@
         @if($tour->featured)
             <span class="absolute top-3 right-3 bg-amber-500 text-white text-xs font-semibold px-2 py-1 rounded-md flex items-center gap-1">
                 <i data-lucide="star" class="w-3 h-3"></i>
-                Tavsiya
+                {{ __('messages.recommended') }}
             </span>
         @endif
     </div>
@@ -33,7 +33,7 @@
         <div class="flex items-center gap-3 text-xs text-gray-500 mb-3">
             <span class="flex items-center gap-1">
                 <i data-lucide="calendar" class="w-3.5 h-3.5"></i>
-                {{ $tour->duration_days }} kun / {{ $tour->duration_nights }} tun
+                {{ $tour->duration_days }} {{ __('messages.days') }} / {{ $tour->duration_nights }} {{ __('messages.nights') }}
             </span>
             @if($tour->meal_plan)
                 <span class="flex items-center gap-1">
@@ -50,11 +50,11 @@
                 @endif
                 <div>
                     <span class="text-lg font-bold text-gray-900">${{ number_format($tour->discountedPrice(), 0) }}</span>
-                    <span class="text-xs text-gray-500">/ kishi</span>
+                    <span class="text-xs text-gray-500">/ {{ __('messages.per_person') }}</span>
                 </div>
             </div>
             <span class="text-xs font-medium text-blue-600 flex items-center gap-1 group-hover:gap-1.5 transition-all">
-                Batafsil <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+                {{ __('messages.details') }} <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
             </span>
         </div>
     </div>

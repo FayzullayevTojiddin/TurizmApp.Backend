@@ -11,9 +11,9 @@ return new class extends Migration
     {
         Schema::create('tour_packages', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
+            $table->json('title');
             $table->string('slug')->unique();
-            $table->text('description')->nullable();
+            $table->json('description')->nullable();
             $table->unsignedSmallInteger('duration_days');
             $table->unsignedSmallInteger('duration_nights');
             $table->date('start_date');
