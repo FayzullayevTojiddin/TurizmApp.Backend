@@ -11,6 +11,9 @@ enum Language: string
     case AR = 'ar';
     case TR = 'tr';
     case KO = 'ko';
+    case JA = 'ja';
+    case HI = 'hi';
+    case FA = 'fa';
 
     public function label(): string
     {
@@ -22,6 +25,9 @@ enum Language: string
             self::AR => 'العربية',
             self::TR => 'Türkçe',
             self::KO => '한국어',
+            self::JA => '日本語',
+            self::HI => 'हिन्दी',
+            self::FA => 'فارسی',
         };
     }
 
@@ -35,6 +41,9 @@ enum Language: string
             self::AR => '🇸🇦',
             self::TR => '🇹🇷',
             self::KO => '🇰🇷',
+            self::JA => '🇯🇵',
+            self::HI => '🇮🇳',
+            self::FA => '🇮🇷',
         };
     }
 }
