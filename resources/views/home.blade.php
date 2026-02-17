@@ -3,7 +3,9 @@
     {{-- Hero --}}
     <section class="relative bg-gray-900 overflow-hidden">
         <div class="absolute inset-0 bg-gradient-to-r from-gray-900/95 to-gray-900/60"></div>
-        <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1488085061387-422e29b40080?w=1920')] bg-cover bg-center opacity-40"></div>
+        <div class="absolute inset-0 bg-cover bg-center opacity-40"
+            style="background-image: url('{{ asset('images/background_image.jpg') }}'); background-position: center 10%;">
+        </div>
         <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-28 lg:py-36">
             <div class="max-w-xl">
                 <p class="text-blue-400 font-semibold text-sm tracking-wide uppercase mb-4">{{ __('messages.hero_subtitle') }}</p>

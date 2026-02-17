@@ -3,10 +3,11 @@
         <div class="flex items-center justify-between h-16">
 
             <a href="{{ route('home') }}" class="flex items-center gap-2.5">
-                <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
-                    <i data-lucide="globe" class="w-5 h-5 text-white"></i>
+                <img src="{{ asset('images/icon.jpg') }}" alt="Logo" class="w-10 h-10 rounded-lg object-contain">
+                <div class="leading-tight">
+                    <span class="text-sm font-bold text-gray-900 block">Zalatiye Lastochka</span>
+                    <span class="text-[10px] font-semibold text-blue-600 uppercase tracking-wider">MCHJ Travel</span>
                 </div>
-                <span class="text-lg font-bold tracking-tight text-gray-900">TurizmApp</span>
             </a>
 
             <nav class="hidden md:flex items-center gap-1">
