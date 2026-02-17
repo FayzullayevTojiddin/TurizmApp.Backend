@@ -3,7 +3,7 @@
         <div class="flex items-center justify-between h-16">
 
             <a href="{{ route('home') }}" class="flex items-center gap-2.5">
-                <img src="{{ asset('images/icon.jpg') }}" alt="Logo" class="w-10 h-10 rounded-lg object-contain">
+                <img src="{{ asset('images/icon.jpg') }}" alt="Logo" class="rounded-lg shrink-0" style="width: 2.5rem; height: 2.5rem; object-fit: contain;">
                 <div class="leading-tight">
                     <span class="text-sm font-bold text-gray-900 block">Zalatiye Lastochka</span>
                     <span class="text-[10px] font-semibold text-blue-600 uppercase tracking-wider">MCHJ Travel</span>
