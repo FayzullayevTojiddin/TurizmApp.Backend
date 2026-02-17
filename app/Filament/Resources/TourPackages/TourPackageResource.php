@@ -5,6 +5,7 @@ namespace App\Filament\Resources\TourPackages;
 use App\Filament\Resources\TourPackages\Pages\CreateTourPackage;
 use App\Filament\Resources\TourPackages\Pages\EditTourPackage;
 use App\Filament\Resources\TourPackages\Pages\ListTourPackages;
+use App\Filament\Resources\TourPackages\RelationManagers\TourPackageItemsRelationManager;
 use App\Filament\Resources\TourPackages\Schemas\TourPackageForm;
 use App\Filament\Resources\TourPackages\Tables\TourPackagesTable;
 use App\Models\TourPackage;
@@ -42,7 +43,7 @@ class TourPackageResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            TourPackageItemsRelationManager::class,
         ];
     }
 

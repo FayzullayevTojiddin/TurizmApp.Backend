@@ -112,6 +112,7 @@ return [
     'subject' => 'Mavzu',
     'message' => 'Xabar',
     'send' => 'Yuborish',
+    'contact_success' => 'Xabaringiz muvaffaqiyatli yuborildi! Tez orada siz bilan bog\'lanamiz.',
 
     // Tours index
     'tour_packages_title' => 'Tur paketlar',

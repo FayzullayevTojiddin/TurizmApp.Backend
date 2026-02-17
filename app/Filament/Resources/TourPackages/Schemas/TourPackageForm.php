@@ -6,7 +6,6 @@ use App\Enums\Language;
 use App\Enums\Tour\MealPlanEnum;
 use App\Enums\Tour\TourPackageStatusEnum;
 use Filament\Forms\Components\Checkbox;
-use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Select;
@@ -83,14 +82,7 @@ class TourPackageForm
     {
         return Section::make('Muddat')
             ->schema([
-                Grid::make(4)->schema([
-                    DatePicker::make('start_date')
-                        ->label('Boshlanish sanasi')
-                        ->required(),
-                    DatePicker::make('end_date')
-                        ->label('Tugash sanasi')
-                        ->required()
-                        ->afterOrEqual('start_date'),
+                Grid::make(2)->schema([
                     TextInput::make('duration_days')
                         ->label('Kunlar soni')
                         ->numeric()

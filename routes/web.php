@@ -9,6 +9,7 @@ use App\Http\Controllers\Web\PageController;
 use App\Http\Controllers\Web\Auth\LoginController;
 use App\Http\Controllers\Web\Auth\RegisterController;
 use App\Http\Controllers\Web\BookingController;
+use App\Http\Controllers\Web\ContactController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('locale/{lang}', function ($lang) {
@@ -21,6 +22,7 @@ Route::get('locale/{lang}', function ($lang) {
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/about', [PageController::class, 'about'])->name('about');
 Route::get('/contact', [PageController::class, 'contact'])->name('contact');
+Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
 Route::get('/licenses', [PageController::class, 'licenses'])->name('licenses');
 
 Route::get('/tours', [TourController::class, 'index'])->name('tours.index');

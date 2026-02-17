@@ -19,8 +19,6 @@ class TourPackage extends Model
         'description',
         'duration_days',
         'duration_nights',
-        'start_date',
-        'end_date',
         'base_price',
         'discount_percent',
         'max_people',
@@ -37,8 +35,6 @@ class TourPackage extends Model
     protected function casts(): array
     {
         return [
-            'start_date' => 'date',
-            'end_date' => 'date',
             'base_price' => 'decimal:2',
             'included_services' => 'array',
             'excluded_services' => 'array',
@@ -105,15 +101,17 @@ class TourPackage extends Model
         return $this->status === TourPackageStatusEnum::Active;
     }
 
-    public function getTitleAttribute($value): string
+    public function translatedTitle(): string
     {
-        $titles = is_string($value) ? json_decode($value, true) : $value;
+        $titles = $this->getAttributes()['title'] ?? null;
+        $titles = is_string($titles) ? json_decode($titles, true) : $titles;
         return $titles[app()->getLocale()] ?? $titles['uz'] ?? '';
     }
 
-    public function getDescriptionAttribute($value): string
+    public function translatedDescription(): string
     {
-        $descriptions = is_string($value) ? json_decode($value, true) : $value;
+        $descriptions = $this->getAttributes()['description'] ?? null;
+        $descriptions = is_string($descriptions) ? json_decode($descriptions, true) : $descriptions;
         return $descriptions[app()->getLocale()] ?? $descriptions['uz'] ?? '';
     }
 }

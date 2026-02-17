@@ -3,7 +3,7 @@
 <a href="{{ route('tours.show', $tour) }}" class="group block bg-white rounded-xl border border-gray-200 hover:border-gray-300 hover:shadow-lg transition-all duration-200 overflow-hidden">
     <div class="aspect-[16/10] bg-gray-100 relative overflow-hidden">
         @if($tour->cover_image)
-            <img src="{{ asset('storage/' . $tour->cover_image) }}" alt="{{ $tour->title }}"
+            <img src="{{ asset('storage/' . $tour->cover_image) }}" alt="{{ $tour->translatedTitle() }}"
                  class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
         @else
             <div class="w-full h-full flex items-center justify-center bg-gradient-to-br from-slate-100 to-slate-200">
@@ -27,7 +27,7 @@
 
     <div class="p-4">
         <h3 class="font-semibold text-gray-900 group-hover:text-blue-600 transition line-clamp-1 mb-2">
-            {{ $tour->title }}
+            {{ $tour->translatedTitle() }}
         </h3>
 
         <div class="flex items-center gap-3 text-xs text-gray-500 mb-3">

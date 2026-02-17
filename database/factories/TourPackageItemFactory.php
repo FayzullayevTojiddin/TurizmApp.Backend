@@ -12,48 +12,53 @@ class TourPackageItemFactory extends Factory
     protected $model = TourPackageItem::class;
 
     private const DESTINATIONS = [
-        ['title' => 'Istanbul', 'country' => 'Turkiya', 'city' => 'Istanbul'],
-        ['title' => 'Antalya', 'country' => 'Turkiya', 'city' => 'Antalya'],
-        ['title' => 'Kapadokiya', 'country' => 'Turkiya', 'city' => 'Nevsehir'],
-        ['title' => 'Dubai', 'country' => 'BAA', 'city' => 'Dubai'],
-        ['title' => 'Sharm el-Sheikh', 'country' => 'Misr', 'city' => 'Sharm el-Sheikh'],
-        ['title' => 'Roma', 'country' => 'Italiya', 'city' => 'Roma'],
+        ['uz' => 'Istanbul', 'en' => 'Istanbul', 'ru' => 'Стамбул', 'country' => 'Turkiya', 'city' => 'Istanbul'],
+        ['uz' => 'Antalya', 'en' => 'Antalya', 'ru' => 'Анталья', 'country' => 'Turkiya', 'city' => 'Antalya'],
+        ['uz' => 'Kapadokiya', 'en' => 'Cappadocia', 'ru' => 'Каппадокия', 'country' => 'Turkiya', 'city' => 'Nevsehir'],
+        ['uz' => 'Dubai', 'en' => 'Dubai', 'ru' => 'Дубай', 'country' => 'BAA', 'city' => 'Dubai'],
+        ['uz' => 'Sharm el-Sheikh', 'en' => 'Sharm el-Sheikh', 'ru' => 'Шарм-эль-Шейх', 'country' => 'Misr', 'city' => 'Sharm el-Sheikh'],
+        ['uz' => 'Roma', 'en' => 'Rome', 'ru' => 'Рим', 'country' => 'Italiya', 'city' => 'Roma'],
     ];
 
     private const HOTELS = [
-        ['title' => 'Rixos Premium', 'stars' => 5, 'meal_plan' => 'AI'],
-        ['title' => 'Hilton Garden Inn', 'stars' => 4, 'meal_plan' => 'BB'],
-        ['title' => 'Delphin Imperial', 'stars' => 5, 'meal_plan' => 'AI'],
-        ['title' => 'Marriott Resort', 'stars' => 5, 'meal_plan' => 'HB'],
-        ['title' => 'Ramada Hotel', 'stars' => 4, 'meal_plan' => 'BB'],
-        ['title' => 'Sheraton Grand', 'stars' => 5, 'meal_plan' => 'FB'],
+        ['uz' => 'Rixos Premium', 'en' => 'Rixos Premium', 'ru' => 'Rixos Premium', 'stars' => 5, 'meal_plan' => 'AI'],
+        ['uz' => 'Hilton Garden Inn', 'en' => 'Hilton Garden Inn', 'ru' => 'Hilton Garden Inn', 'stars' => 4, 'meal_plan' => 'BB'],
+        ['uz' => 'Delphin Imperial', 'en' => 'Delphin Imperial', 'ru' => 'Delphin Imperial', 'stars' => 5, 'meal_plan' => 'AI'],
+        ['uz' => 'Marriott Resort', 'en' => 'Marriott Resort', 'ru' => 'Marriott Resort', 'stars' => 5, 'meal_plan' => 'HB'],
+        ['uz' => 'Ramada Hotel', 'en' => 'Ramada Hotel', 'ru' => 'Ramada Hotel', 'stars' => 4, 'meal_plan' => 'BB'],
+        ['uz' => 'Sheraton Grand', 'en' => 'Sheraton Grand', 'ru' => 'Sheraton Grand', 'stars' => 5, 'meal_plan' => 'FB'],
     ];
 
     private const ATTRACTIONS = [
-        ['title' => 'Ayasofya', 'category' => 'historical', 'fee' => 25, 'duration' => 120],
-        ['title' => 'Ko\'k Masjid', 'category' => 'religious', 'fee' => 0, 'duration' => 60],
-        ['title' => 'Burj Khalifa', 'category' => 'entertainment', 'fee' => 40, 'duration' => 90],
-        ['title' => 'Kolizey', 'category' => 'historical', 'fee' => 16, 'duration' => 150],
-        ['title' => 'Kapadokiya sharlar', 'category' => 'nature', 'fee' => 150, 'duration' => 180],
-        ['title' => 'Grand Bozor', 'category' => 'shopping', 'fee' => 0, 'duration' => 120],
+        ['uz' => 'Ayasofya', 'en' => 'Hagia Sophia', 'ru' => 'Айя-София', 'category' => 'historical', 'fee' => 25, 'duration' => 120],
+        ['uz' => 'Ko\'k Masjid', 'en' => 'Blue Mosque', 'ru' => 'Голубая мечеть', 'category' => 'religious', 'fee' => 0, 'duration' => 60],
+        ['uz' => 'Burj Khalifa', 'en' => 'Burj Khalifa', 'ru' => 'Бурдж-Халифа', 'category' => 'entertainment', 'fee' => 40, 'duration' => 90],
+        ['uz' => 'Kolizey', 'en' => 'Colosseum', 'ru' => 'Колизей', 'category' => 'historical', 'fee' => 16, 'duration' => 150],
+        ['uz' => 'Kapadokiya sharlar', 'en' => 'Cappadocia Balloons', 'ru' => 'Воздушные шары Каппадокии', 'category' => 'nature', 'fee' => 150, 'duration' => 180],
+        ['uz' => 'Grand Bozor', 'en' => 'Grand Bazaar', 'ru' => 'Гранд-Базар', 'category' => 'shopping', 'fee' => 0, 'duration' => 120],
     ];
 
     private const ACTIVITIES = [
-        ['title' => 'Bosfor sayohati', 'category' => 'excursion', 'hours' => 3, 'price' => 35],
-        ['title' => 'Rafting', 'category' => 'adventure', 'hours' => 4, 'price' => 45],
-        ['title' => 'Cho\'l safari', 'category' => 'adventure', 'hours' => 5, 'price' => 60],
-        ['title' => 'Snorkeling', 'category' => 'water_sport', 'hours' => 3, 'price' => 30],
-        ['title' => 'Shahar ekskursiyasi', 'category' => 'cultural', 'hours' => 6, 'price' => 50],
-        ['title' => 'Gastro tur', 'category' => 'food_tour', 'hours' => 4, 'price' => 40],
+        ['uz' => 'Bosfor sayohati', 'en' => 'Bosphorus Cruise', 'ru' => 'Круиз по Босфору', 'category' => 'excursion', 'hours' => 3, 'price' => 35],
+        ['uz' => 'Rafting', 'en' => 'Rafting', 'ru' => 'Рафтинг', 'category' => 'adventure', 'hours' => 4, 'price' => 45],
+        ['uz' => 'Cho\'l safari', 'en' => 'Desert Safari', 'ru' => 'Сафари в пустыне', 'category' => 'adventure', 'hours' => 5, 'price' => 60],
+        ['uz' => 'Snorkeling', 'en' => 'Snorkeling', 'ru' => 'Снорклинг', 'category' => 'water_sport', 'hours' => 3, 'price' => 30],
+        ['uz' => 'Shahar ekskursiyasi', 'en' => 'City Tour', 'ru' => 'Обзорная экскурсия', 'category' => 'cultural', 'hours' => 6, 'price' => 50],
+        ['uz' => 'Gastro tur', 'en' => 'Gastro Tour', 'ru' => 'Гастрономический тур', 'category' => 'food_tour', 'hours' => 4, 'price' => 40],
     ];
+
+    private static function multiLang(string $uz, string $en, string $ru): array
+    {
+        return ['uz' => $uz, 'en' => $en, 'ru' => $ru];
+    }
 
     public function definition(): array
     {
         return [
             'tour_package_id' => TourPackage::factory(),
             'type' => fake()->randomElement(TourItemTypeEnum::cases()),
-            'title' => fake()->sentence(3),
-            'description' => fake()->sentence(),
+            'title' => self::multiLang('Element', 'Item', 'Элемент'),
+            'description' => self::multiLang('Tavsif', 'Description', 'Описание'),
             'day_number' => fake()->numberBetween(1, 10),
             'order' => fake()->numberBetween(1, 5),
             'meta_data' => [],
@@ -68,8 +73,12 @@ class TourPackageItemFactory extends Factory
 
         return $this->state([
             'type' => TourItemTypeEnum::Destination,
-            'title' => $dest['title'],
-            'description' => $dest['title'] . ' shahri',
+            'title' => self::multiLang($dest['uz'], $dest['en'], $dest['ru']),
+            'description' => self::multiLang(
+                $dest['uz'] . ' shahri',
+                $dest['en'] . ' city',
+                'Город ' . $dest['ru']
+            ),
             'meta_data' => [
                 'country' => $dest['country'],
                 'city' => $dest['city'],
@@ -85,8 +94,12 @@ class TourPackageItemFactory extends Factory
 
         return $this->state([
             'type' => TourItemTypeEnum::Hotel,
-            'title' => $hotel['title'],
-            'description' => $hotel['stars'] . ' yulduzli mehmonxona',
+            'title' => self::multiLang($hotel['uz'], $hotel['en'], $hotel['ru']),
+            'description' => self::multiLang(
+                $hotel['stars'] . ' yulduzli mehmonxona',
+                $hotel['stars'] . ' star hotel',
+                $hotel['stars'] . '-звездочный отель'
+            ),
             'meta_data' => [
                 'stars' => $hotel['stars'],
                 'room_type' => fake()->randomElement(['standard', 'deluxe', 'suite']),
@@ -105,7 +118,7 @@ class TourPackageItemFactory extends Factory
 
         return $this->state([
             'type' => TourItemTypeEnum::Attraction,
-            'title' => $attr['title'],
+            'title' => self::multiLang($attr['uz'], $attr['en'], $attr['ru']),
             'meta_data' => [
                 'category' => $attr['category'],
                 'entrance_fee' => $attr['fee'],
@@ -120,7 +133,7 @@ class TourPackageItemFactory extends Factory
 
         return $this->state([
             'type' => TourItemTypeEnum::Activity,
-            'title' => $act['title'],
+            'title' => self::multiLang($act['uz'], $act['en'], $act['ru']),
             'meta_data' => [
                 'category' => $act['category'],
                 'duration_hours' => $act['hours'],
@@ -135,17 +148,28 @@ class TourPackageItemFactory extends Factory
 
     public function transport(): static
     {
-        $cities = ['Toshkent', 'Istanbul', 'Antalya', 'Dubai', 'Roma'];
+        $cities = [
+            ['uz' => 'Toshkent', 'en' => 'Tashkent', 'ru' => 'Ташкент'],
+            ['uz' => 'Istanbul', 'en' => 'Istanbul', 'ru' => 'Стамбул'],
+            ['uz' => 'Antalya', 'en' => 'Antalya', 'ru' => 'Анталья'],
+            ['uz' => 'Dubai', 'en' => 'Dubai', 'ru' => 'Дубай'],
+            ['uz' => 'Roma', 'en' => 'Rome', 'ru' => 'Рим'],
+        ];
+
         $from = fake()->randomElement($cities);
-        $to = fake()->randomElement(array_diff($cities, [$from]));
+        $to = fake()->randomElement(array_filter($cities, fn ($c) => $c['uz'] !== $from['uz']));
 
         return $this->state([
             'type' => TourItemTypeEnum::Transport,
-            'title' => $from . ' → ' . $to,
+            'title' => self::multiLang(
+                $from['uz'] . ' → ' . $to['uz'],
+                $from['en'] . ' → ' . $to['en'],
+                $from['ru'] . ' → ' . $to['ru']
+            ),
             'meta_data' => [
                 'mode' => fake()->randomElement(['flight', 'bus', 'train']),
-                'from' => $from,
-                'to' => $to,
+                'from' => $from['uz'],
+                'to' => $to['uz'],
                 'carrier' => fake()->randomElement(['Turkish Airlines', 'Uzbekistan Airways', 'FlyDubai']),
             ],
         ]);

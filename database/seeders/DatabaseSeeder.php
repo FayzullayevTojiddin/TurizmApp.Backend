@@ -13,16 +13,10 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-            'role' => 'super'
-        ]);
-
-        User::factory(5)->create();
-
-        $this->call([
-            TourPackageSeeder::class,
-            MyTourSeeder::class,
+            'name' => 'Admin',
+            'email' => 'alalhaq1@mail.ru',
+            'password' => bcrypt('123QwertY'),
+            'role' => 'super',
         ]);
     }
 }

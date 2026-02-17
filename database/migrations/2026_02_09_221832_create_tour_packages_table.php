@@ -16,8 +16,6 @@ return new class extends Migration
             $table->json('description')->nullable();
             $table->unsignedSmallInteger('duration_days');
             $table->unsignedSmallInteger('duration_nights');
-            $table->date('start_date');
-            $table->date('end_date');
             $table->decimal('base_price', 12, 2);
             $table->unsignedTinyInteger('discount_percent')->default(0);
             $table->unsignedSmallInteger('max_people');

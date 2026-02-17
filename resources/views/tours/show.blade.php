@@ -1,4 +1,4 @@
-<x-layouts.app :title="$tourPackage->title">
+<x-layouts.app :title="$tourPackage->translatedTitle()">
 
     <section class="py-10" x-data="{ showBooking: false }">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -14,7 +14,7 @@
                 <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
                 <a href="{{ route('tours.index') }}" class="hover:text-gray-700 transition">{{ __('messages.tours') }}</a>
                 <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
-                <span class="text-gray-900 font-medium">{{ $tourPackage->title }}</span>
+                <span class="text-gray-900 font-medium">{{ $tourPackage->translatedTitle() }}</span>
             </nav>
 
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -23,7 +23,7 @@
                 <div class="lg:col-span-2 space-y-8">
                     <div class="aspect-[16/9] rounded-xl overflow-hidden bg-gray-100">
                         @if($tourPackage->cover_image)
-                            <img src="{{ asset('storage/' . $tourPackage->cover_image) }}" alt="{{ $tourPackage->title }}" class="w-full h-full object-cover">
+                            <img src="{{ asset('storage/' . $tourPackage->cover_image) }}" alt="{{ $tourPackage->translatedTitle() }}" class="w-full h-full object-cover">
                         @else
                             <div class="w-full h-full flex items-center justify-center bg-gradient-to-br from-slate-100 to-slate-200">
                                 <i data-lucide="image" class="w-16 h-16 text-slate-300"></i>
@@ -32,9 +32,9 @@
                     </div>
 
                     <div>
-                        <h1 class="text-2xl lg:text-3xl font-bold text-gray-900 mb-3">{{ $tourPackage->title }}</h1>
-                        @if($tourPackage->description)
-                            <div class="prose prose-gray max-w-none text-gray-600">{!! $tourPackage->description !!}</div>
+                        <h1 class="text-2xl lg:text-3xl font-bold text-gray-900 mb-3">{{ $tourPackage->translatedTitle() }}</h1>
+                        @if($tourPackage->translatedDescription())
+                            <div class="prose prose-gray max-w-none text-gray-600">{!! $tourPackage->translatedDescription() !!}</div>
                         @endif
                     </div>
 
@@ -43,22 +43,24 @@
                     @if($itemsByDay->count())
                         <div>
                             <h2 class="text-lg font-bold text-gray-900 mb-4">{{ __('messages.tour_program') }}</h2>
-                            <div class="space-y-3">
+                            <div class="space-y-4">
                                 @foreach($itemsByDay as $day => $items)
                                     <div class="bg-white rounded-xl border border-gray-200 p-5">
-                                        <h3 class="text-sm font-semibold text-gray-900 mb-3 flex items-center gap-2">
+                                        <h3 class="text-sm font-semibold text-gray-900 mb-4 flex items-center gap-2">
                                             <span class="w-7 h-7 bg-blue-600 text-white rounded-lg flex items-center justify-center text-xs font-bold">{{ $day ?: '-' }}</span>
                                             {{ $day ? $day . __('messages.day_suffix') : __('messages.general_items') }}
                                         </h3>
-                                        <div class="space-y-3 ml-9">
+                                        <div class="space-y-4 ml-9">
                                             @foreach($items as $item)
                                                 <div class="flex items-start gap-3">
                                                     <x-item-icon :type="$item->type->value" />
-                                                    <div>
-                                                        <div class="text-sm font-medium text-gray-900">{{ $item->title }}</div>
-                                                        <div class="text-xs text-gray-500">{{ $item->type->label() }}</div>
-                                                        @if($item->description)
-                                                            <div class="text-sm text-gray-500 mt-0.5">{{ $item->description }}</div>
+                                                    <div class="flex-1 min-w-0">
+                                                        <div class="flex items-center gap-2">
+                                                            <span class="text-sm font-medium text-gray-900">{{ $item->translatedTitle() }}</span>
+                                                            <span class="text-xs bg-gray-100 text-gray-600 px-1.5 py-0.5 rounded font-medium">{{ $item->type->label() }}</span>
+                                                        </div>
+                                                        @if($item->translatedDescription())
+                                                            <p class="text-sm text-gray-500 mt-1">{{ $item->translatedDescription() }}</p>
                                                         @endif
                                                     </div>
                                                 </div>
@@ -123,8 +125,6 @@
                         <div class="space-y-3 text-sm">
                             @foreach([
                                 ['icon' => 'calendar', 'label' => __('messages.duration'), 'value' => $tourPackage->duration_days . ' ' . __('messages.days') . ' / ' . $tourPackage->duration_nights . ' ' . __('messages.nights')],
-                                ['icon' => 'calendar-check', 'label' => __('messages.start_date'), 'value' => $tourPackage->start_date->format('d.m.Y')],
-                                ['icon' => 'calendar-x', 'label' => __('messages.end_date'), 'value' => $tourPackage->end_date->format('d.m.Y')],
                                 ['icon' => 'users', 'label' => __('messages.people'), 'value' => $tourPackage->min_people . ' — ' . $tourPackage->max_people . ' ' . __('messages.person')],
                             ] as $info)
                                 <div class="flex items-center justify-between">
@@ -199,10 +199,9 @@
                 </div>
 
                 <div class="bg-gray-50 rounded-lg p-3 mb-5">
-                    <p class="text-sm font-medium text-gray-900">{{ $tourPackage->title }}</p>
+                    <p class="text-sm font-medium text-gray-900">{{ $tourPackage->translatedTitle() }}</p>
                     <p class="text-xs text-gray-500 mt-0.5">
-                        {{ $tourPackage->start_date->format('d.m.Y') }} — {{ $tourPackage->end_date->format('d.m.Y') }}
-                        &middot; {{ $tourPackage->duration_days }} {{ __('messages.days') }}
+                        {{ $tourPackage->duration_days }} {{ __('messages.days') }}
                     </p>
                     <p class="text-sm font-bold text-blue-600 mt-1">${{ number_format($tourPackage->discountedPrice(), 0) }} / {{ __('messages.per_person') }}</p>
                 </div>

@@ -25,7 +25,7 @@ class TourController extends Controller
                     'price_asc' => $q->orderBy('base_price', 'asc'),
                     'price_desc' => $q->orderBy('base_price', 'desc'),
                     'duration' => $q->orderBy('duration_days', 'asc'),
-                    'date' => $q->orderBy('start_date', 'asc'),
+                    'date' => $q->latest(),
                     default => $q->latest(),
                 };
             }, fn ($q) => $q->latest())

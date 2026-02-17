@@ -28,7 +28,6 @@ class TourPackageFactory extends Factory
         ]);
 
         $durationDays = fake()->randomElement([5, 7, 10, 12, 14]);
-        $startDate = fake()->dateTimeBetween('+1 month', '+6 months');
 
         return [
             'title' => $title,
@@ -36,8 +35,6 @@ class TourPackageFactory extends Factory
             'description' => fake()->paragraphs(2, true),
             'duration_days' => $durationDays,
             'duration_nights' => $durationDays - 1,
-            'start_date' => $startDate,
-            'end_date' => (clone $startDate)->modify("+{$durationDays} days"),
             'base_price' => fake()->randomElement([500, 800, 1200, 1500, 2000, 2500, 3000]),
             'discount_percent' => fake()->randomElement([0, 0, 0, 5, 10, 15, 20]),
             'max_people' => fake()->randomElement([10, 15, 20, 25, 30]),

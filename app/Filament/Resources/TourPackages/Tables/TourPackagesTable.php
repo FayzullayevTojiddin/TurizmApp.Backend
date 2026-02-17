@@ -27,8 +27,17 @@ class TourPackagesTable
 
                 TextColumn::make('title')
                     ->label('Nomi')
-                    ->searchable()
-                    ->sortable()
+                    ->formatStateUsing(fn ($record) => $record->translatedTitle())
+                    ->searchable(query: function ($query, string $search): void {
+                        $query->where(function ($q) use ($search) {
+                            $q->where('title->uz', 'like', "%{$search}%")
+                              ->orWhere('title->en', 'like', "%{$search}%")
+                              ->orWhere('title->ru', 'like', "%{$search}%");
+                        });
+                    })
+                    ->sortable(query: function ($query, string $direction): void {
+                        $query->orderBy('title->' . app()->getLocale(), $direction);
+                    })
                     ->weight('bold')
                     ->limit(30),
 

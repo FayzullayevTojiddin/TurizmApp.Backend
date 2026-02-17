@@ -12,8 +12,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('tour_package_id')->constrained()->cascadeOnDelete();
             $table->string('type');
-            $table->string('title');
-            $table->text('description')->nullable();
+            $table->json('title');
+            $table->json('description')->nullable();
             $table->unsignedSmallInteger('day_number')->nullable();
             $table->unsignedSmallInteger('order')->default(0);
             $table->json('meta_data')->nullable();
