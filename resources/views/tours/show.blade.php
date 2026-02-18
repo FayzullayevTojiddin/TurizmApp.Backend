@@ -33,16 +33,57 @@
 
                     {{-- Gallery --}}
                     @if($tourPackage->gallery && count($tourPackage->gallery))
-                        <div>
+                        <div x-data="{ lightbox: false, current: 0, images: {{ json_encode(collect($tourPackage->gallery)->map(fn($img) => asset('storage/' . $img))->values()) }} }">
                             <h2 class="text-lg font-bold text-gray-900 mb-3 flex items-center gap-2">
                                 <i data-lucide="images" class="w-5 h-5"></i> {{ __('messages.gallery') }}
                             </h2>
                             <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
-                                @foreach($tourPackage->gallery as $image)
-                                    <a href="{{ asset('storage/' . $image) }}" target="_blank" class="aspect-[4/3] rounded-lg overflow-hidden bg-gray-100 block hover:opacity-90 transition">
+                                @foreach($tourPackage->gallery as $index => $image)
+                                    <button @click="current = {{ $index }}; lightbox = true" class="aspect-[4/3] rounded-lg overflow-hidden bg-gray-100 block hover:opacity-90 transition cursor-pointer">
                                         <img src="{{ asset('storage/' . $image) }}" alt="{{ $tourPackage->translatedTitle() }}" class="w-full h-full object-cover">
-                                    </a>
+                                    </button>
                                 @endforeach
+                            </div>
+
+                            {{-- Lightbox Modal --}}
+                            <div x-show="lightbox" x-cloak
+                                 @keydown.escape.window="lightbox = false"
+                                 @keydown.arrow-right.window="lightbox && (current = (current + 1) % images.length)"
+                                 @keydown.arrow-left.window="lightbox && (current = (current - 1 + images.length) % images.length)"
+                                 style="position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;"
+                                 x-transition:enter="transition ease-out duration-200"
+                                 x-transition:enter-start="opacity-0"
+                                 x-transition:enter-end="opacity-100"
+                                 x-transition:leave="transition ease-in duration-150"
+                                 x-transition:leave-start="opacity-100"
+                                 x-transition:leave-end="opacity-0">
+
+                                <div style="position:absolute;inset:0;background:rgba(0,0,0,0.9);" @click="lightbox = false"></div>
+
+                                {{-- Close --}}
+                                <button @click="lightbox = false" class="absolute top-4 right-4 z-10 p-2 text-white/70 hover:text-white transition">
+                                    <i data-lucide="x" class="w-6 h-6"></i>
+                                </button>
+
+                                {{-- Counter --}}
+                                <div class="absolute top-4 left-4 z-10 text-white/70 text-sm font-medium">
+                                    <span x-text="current + 1"></span> / <span x-text="images.length"></span>
+                                </div>
+
+                                {{-- Prev --}}
+                                <button @click="current = (current - 1 + images.length) % images.length"
+                                        class="absolute left-4 z-10 p-2 bg-white/10 hover:bg-white/20 text-white rounded-full transition">
+                                    <i data-lucide="chevron-left" class="w-6 h-6"></i>
+                                </button>
+
+                                {{-- Image --}}
+                                <img :src="images[current]" class="relative z-10 max-h-[85vh] max-w-[90vw] object-contain rounded-lg" alt="">
+
+                                {{-- Next --}}
+                                <button @click="current = (current + 1) % images.length"
+                                        class="absolute right-4 z-10 p-2 bg-white/10 hover:bg-white/20 text-white rounded-full transition">
+                                    <i data-lucide="chevron-right" class="w-6 h-6"></i>
+                                </button>
                             </div>
                         </div>
                     @endif
