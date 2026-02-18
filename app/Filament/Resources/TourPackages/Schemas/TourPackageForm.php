@@ -174,6 +174,12 @@ class TourPackageForm
                     ->multiple()
                     ->directory('tour-packages/gallery')
                     ->reorderable(),
+                FileUpload::make('videos')
+                    ->label('Videolar')
+                    ->multiple()
+                    ->acceptedFileTypes(['video/mp4', 'video/webm', 'video/ogg'])
+                    ->directory('tour-packages/videos')
+                    ->reorderable(),
             ]);
     }
 }

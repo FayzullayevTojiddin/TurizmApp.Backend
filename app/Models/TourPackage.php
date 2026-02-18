@@ -30,6 +30,7 @@ class TourPackage extends Model
         'featured',
         'cover_image',
         'gallery',
+        'videos'
     ];
 
     protected function casts(): array
@@ -42,6 +43,7 @@ class TourPackage extends Model
             'status' => TourPackageStatusEnum::class,
             'featured' => 'boolean',
             'gallery' => 'array',
+            'videos' => 'array',
             'title' => 'array',
             'description' => 'array',
         ];

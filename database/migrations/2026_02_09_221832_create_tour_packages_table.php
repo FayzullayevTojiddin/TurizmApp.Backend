@@ -27,6 +27,7 @@ return new class extends Migration
             $table->boolean('featured')->default(false);
             $table->string('cover_image')->nullable();
             $table->json('gallery')->nullable();
+            $table->json('videos')->nullable();
             $table->timestamps();
         });
     }

@@ -25,9 +25,8 @@ class TourPackagesTable
                     ->circular()
                     ->defaultImageUrl(fn () => 'https://ui-avatars.com/api/?name=TP&background=0D8ABC&color=fff'),
 
-                TextColumn::make('title')
+                TextColumn::make('title.uz')
                     ->label('Nomi')
-                    ->formatStateUsing(fn ($record) => $record->translatedTitle())
                     ->searchable(query: function ($query, string $search): void {
                         $query->where(function ($q) use ($search) {
                             $q->where('title->uz', 'like', "%{$search}%")
@@ -36,7 +35,7 @@ class TourPackagesTable
                         });
                     })
                     ->sortable(query: function ($query, string $direction): void {
-                        $query->orderBy('title->' . app()->getLocale(), $direction);
+                        $query->orderBy('title->uz', $direction);
                     })
                     ->weight('bold')
                     ->limit(30),
