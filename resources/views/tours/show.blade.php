@@ -50,40 +50,39 @@
                                 <div x-show="lightbox" x-cloak
                                      @keydown.escape.window="lightbox = false"
                                      @keydown.arrow-right.window="lightbox && (current = (current + 1) % images.length)"
-                                     @keydown.arrow-left.window="lightbox && (current = (current - 1 + images.length) % images.length)"
-                                     style="position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:99999;display:flex;align-items:center;justify-content:center;"
-                                     x-transition:enter="transition ease-out duration-200"
-                                     x-transition:enter-start="opacity-0"
-                                     x-transition:enter-end="opacity-100"
-                                     x-transition:leave="transition ease-in duration-150"
-                                     x-transition:leave-start="opacity-100"
-                                     x-transition:leave-end="opacity-0">
+                                     @keydown.arrow-left.window="lightbox && (current = (current - 1 + images.length) % images.length)">
 
                                     {{-- Backdrop --}}
-                                    <div @click="lightbox = false" style="position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.92);"></div>
+                                    <div @click="lightbox = false"
+                                         style="position:fixed;top:0;left:0;right:0;bottom:0;width:100%;height:100%;background:rgba(0,0,0,0.92);z-index:99990;"></div>
 
                                     {{-- Close --}}
-                                    <button @click="lightbox = false" style="position:fixed;top:16px;right:16px;z-index:10;padding:8px;color:rgba(255,255,255,0.7);cursor:pointer;background:none;border:none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.7)'">
+                                    <button @click="lightbox = false"
+                                            style="position:fixed;top:16px;right:16px;z-index:99999;padding:8px;color:rgba(255,255,255,0.7);cursor:pointer;background:none;border:none;"
+                                            onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.7)'">
                                         <i data-lucide="x" class="w-7 h-7"></i>
                                     </button>
 
                                     {{-- Counter --}}
-                                    <div style="position:fixed;top:20px;left:20px;z-index:10;color:rgba(255,255,255,0.7);font-size:14px;font-weight:500;">
+                                    <div style="position:fixed;top:20px;left:20px;z-index:99999;color:rgba(255,255,255,0.7);font-size:14px;font-weight:500;">
                                         <span x-text="current + 1"></span> / <span x-text="images.length"></span>
                                     </div>
 
                                     {{-- Prev --}}
                                     <button @click="current = (current - 1 + images.length) % images.length"
-                                            style="position:fixed;left:16px;top:50%;transform:translateY(-50%);z-index:10;padding:10px;background:rgba(255,255,255,0.1);border:none;color:#fff;border-radius:50%;cursor:pointer;" onmouseover="this.style.background='rgba(255,255,255,0.25)'" onmouseout="this.style.background='rgba(255,255,255,0.1)'">
+                                            style="position:fixed;left:16px;top:50%;transform:translateY(-50%);z-index:99999;padding:10px;background:rgba(255,255,255,0.1);border:none;color:#fff;border-radius:50%;cursor:pointer;"
+                                            onmouseover="this.style.background='rgba(255,255,255,0.25)'" onmouseout="this.style.background='rgba(255,255,255,0.1)'">
                                         <i data-lucide="chevron-left" class="w-7 h-7"></i>
                                     </button>
 
                                     {{-- Image --}}
-                                    <img :src="images[current]" style="position:relative;z-index:5;max-height:85vh;max-width:85vw;object-fit:contain;border-radius:8px;" alt="">
+                                    <img :src="images[current]"
+                                         style="position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);max-height:85vh;max-width:85vw;object-fit:contain;border-radius:8px;z-index:99995;" alt="">
 
                                     {{-- Next --}}
                                     <button @click="current = (current + 1) % images.length"
-                                            style="position:fixed;right:16px;top:50%;transform:translateY(-50%);z-index:10;padding:10px;background:rgba(255,255,255,0.1);border:none;color:#fff;border-radius:50%;cursor:pointer;" onmouseover="this.style.background='rgba(255,255,255,0.25)'" onmouseout="this.style.background='rgba(255,255,255,0.1)'">
+                                            style="position:fixed;right:16px;top:50%;transform:translateY(-50%);z-index:99999;padding:10px;background:rgba(255,255,255,0.1);border:none;color:#fff;border-radius:50%;cursor:pointer;"
+                                            onmouseover="this.style.background='rgba(255,255,255,0.25)'" onmouseout="this.style.background='rgba(255,255,255,0.1)'">
                                         <i data-lucide="chevron-right" class="w-7 h-7"></i>
                                     </button>
                                 </div>
