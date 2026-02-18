@@ -169,7 +169,7 @@ class TourPackageForm
                     ->image()
                     ->disk('public')
                     ->visibility('public')
-                    ->maxSize(10240)
+                    ->maxSize(51200)
                     ->directory('tour-packages'),
                 FileUpload::make('gallery')
                     ->label('Galereya')
@@ -177,7 +177,7 @@ class TourPackageForm
                     ->multiple()
                     ->disk('public')
                     ->visibility('public')
-                    ->maxSize(10240)
+                    ->maxSize(51200)
                     ->directory('tour-packages/gallery')
                     ->reorderable(),
                 FileUpload::make('videos')
@@ -185,7 +185,7 @@ class TourPackageForm
                     ->multiple()
                     ->disk('public')
                     ->visibility('public')
-                    ->maxSize(102400)
+                    ->maxSize(512000)
                     ->acceptedFileTypes(['video/mp4', 'video/webm', 'video/ogg'])
                     ->directory('tour-packages/videos')
                     ->reorderable(),
