@@ -46,45 +46,48 @@
                             </div>
 
                             {{-- Lightbox Modal --}}
-                            <div x-show="lightbox" x-cloak
-                                 @keydown.escape.window="lightbox = false"
-                                 @keydown.arrow-right.window="lightbox && (current = (current + 1) % images.length)"
-                                 @keydown.arrow-left.window="lightbox && (current = (current - 1 + images.length) % images.length)"
-                                 style="position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;"
-                                 x-transition:enter="transition ease-out duration-200"
-                                 x-transition:enter-start="opacity-0"
-                                 x-transition:enter-end="opacity-100"
-                                 x-transition:leave="transition ease-in duration-150"
-                                 x-transition:leave-start="opacity-100"
-                                 x-transition:leave-end="opacity-0">
+                            <template x-teleport="body">
+                                <div x-show="lightbox" x-cloak
+                                     @keydown.escape.window="lightbox = false"
+                                     @keydown.arrow-right.window="lightbox && (current = (current + 1) % images.length)"
+                                     @keydown.arrow-left.window="lightbox && (current = (current - 1 + images.length) % images.length)"
+                                     style="position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:99999;display:flex;align-items:center;justify-content:center;"
+                                     x-transition:enter="transition ease-out duration-200"
+                                     x-transition:enter-start="opacity-0"
+                                     x-transition:enter-end="opacity-100"
+                                     x-transition:leave="transition ease-in duration-150"
+                                     x-transition:leave-start="opacity-100"
+                                     x-transition:leave-end="opacity-0">
 
-                                <div style="position:absolute;inset:0;background:rgba(0,0,0,0.9);" @click="lightbox = false"></div>
+                                    {{-- Backdrop --}}
+                                    <div @click="lightbox = false" style="position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.92);"></div>
 
-                                {{-- Close --}}
-                                <button @click="lightbox = false" class="absolute top-4 right-4 z-10 p-2 text-white/70 hover:text-white transition">
-                                    <i data-lucide="x" class="w-6 h-6"></i>
-                                </button>
+                                    {{-- Close --}}
+                                    <button @click="lightbox = false" style="position:fixed;top:16px;right:16px;z-index:10;padding:8px;color:rgba(255,255,255,0.7);cursor:pointer;background:none;border:none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.7)'">
+                                        <i data-lucide="x" class="w-7 h-7"></i>
+                                    </button>
 
-                                {{-- Counter --}}
-                                <div class="absolute top-4 left-4 z-10 text-white/70 text-sm font-medium">
-                                    <span x-text="current + 1"></span> / <span x-text="images.length"></span>
+                                    {{-- Counter --}}
+                                    <div style="position:fixed;top:20px;left:20px;z-index:10;color:rgba(255,255,255,0.7);font-size:14px;font-weight:500;">
+                                        <span x-text="current + 1"></span> / <span x-text="images.length"></span>
+                                    </div>
+
+                                    {{-- Prev --}}
+                                    <button @click="current = (current - 1 + images.length) % images.length"
+                                            style="position:fixed;left:16px;top:50%;transform:translateY(-50%);z-index:10;padding:10px;background:rgba(255,255,255,0.1);border:none;color:#fff;border-radius:50%;cursor:pointer;" onmouseover="this.style.background='rgba(255,255,255,0.25)'" onmouseout="this.style.background='rgba(255,255,255,0.1)'">
+                                        <i data-lucide="chevron-left" class="w-7 h-7"></i>
+                                    </button>
+
+                                    {{-- Image --}}
+                                    <img :src="images[current]" style="position:relative;z-index:5;max-height:85vh;max-width:85vw;object-fit:contain;border-radius:8px;" alt="">
+
+                                    {{-- Next --}}
+                                    <button @click="current = (current + 1) % images.length"
+                                            style="position:fixed;right:16px;top:50%;transform:translateY(-50%);z-index:10;padding:10px;background:rgba(255,255,255,0.1);border:none;color:#fff;border-radius:50%;cursor:pointer;" onmouseover="this.style.background='rgba(255,255,255,0.25)'" onmouseout="this.style.background='rgba(255,255,255,0.1)'">
+                                        <i data-lucide="chevron-right" class="w-7 h-7"></i>
+                                    </button>
                                 </div>
-
-                                {{-- Prev --}}
-                                <button @click="current = (current - 1 + images.length) % images.length"
-                                        class="absolute left-4 z-10 p-2 bg-white/10 hover:bg-white/20 text-white rounded-full transition">
-                                    <i data-lucide="chevron-left" class="w-6 h-6"></i>
-                                </button>
-
-                                {{-- Image --}}
-                                <img :src="images[current]" class="relative z-10 max-h-[85vh] max-w-[90vw] object-contain rounded-lg" alt="">
-
-                                {{-- Next --}}
-                                <button @click="current = (current + 1) % images.length"
-                                        class="absolute right-4 z-10 p-2 bg-white/10 hover:bg-white/20 text-white rounded-full transition">
-                                    <i data-lucide="chevron-right" class="w-6 h-6"></i>
-                                </button>
-                            </div>
+                            </template>
                         </div>
                     @endif
 
