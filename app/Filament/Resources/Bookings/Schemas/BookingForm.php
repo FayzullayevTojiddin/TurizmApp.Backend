@@ -109,8 +109,10 @@ class BookingForm
         return Section::make('Holat')
             ->schema([
                 Select::make('status')
-                    ->label('Status')
-                    ->options(BookingStatusEnum::class)
+                    ->label('Holat')
+                    ->options(collect(BookingStatusEnum::cases())->mapWithKeys(
+                        fn (BookingStatusEnum $status) => [$status->value => $status->label()]
+                    ))
                     ->default(BookingStatusEnum::Pending->value)
                     ->required(),
             ]);
