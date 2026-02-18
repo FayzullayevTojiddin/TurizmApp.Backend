@@ -97,9 +97,8 @@ class TourPackageItemsRelationManager extends RelationManager
                     ->label('Turi')
                     ->formatStateUsing(fn (TourItemTypeEnum $state) => $state->label())
                     ->badge(),
-                TextColumn::make('title')
+                TextColumn::make('title.uz')
                     ->label('Nomi')
-                    ->formatStateUsing(fn ($record) => $record->translatedTitle())
                     ->searchable(query: function ($query, string $search): void {
                         $query->where(function ($q) use ($search) {
                             $q->where('title->uz', 'like', "%{$search}%")
