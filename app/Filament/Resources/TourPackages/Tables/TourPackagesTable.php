@@ -22,6 +22,7 @@ class TourPackagesTable
             ->columns([
                 ImageColumn::make('cover_image')
                     ->label('')
+                    ->disk('public')
                     ->circular()
                     ->defaultImageUrl(fn () => 'https://ui-avatars.com/api/?name=TP&background=0D8ABC&color=fff'),
 
