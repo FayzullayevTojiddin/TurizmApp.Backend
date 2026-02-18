@@ -28,8 +28,7 @@ class BookingsTable
 
                 TextColumn::make('tourPackage.title')
                     ->label('Tur paketi')
-                    ->searchable()
-                    ->sortable()
+                    ->sortable(false)
                     ->limit(30),
 
                 TextColumn::make('name')
@@ -78,7 +77,7 @@ class BookingsTable
 
                 SelectFilter::make('tour_package_id')
                     ->label('Tur paketi')
-                    ->relationship('tourPackage', 'title')
+                    ->relationship('tourPackage', 'title->uz')
                     ->searchable()
                     ->preload(),
             ])
