@@ -159,6 +159,8 @@ return [
     'manager_notes' => 'マネージャーメモ',
     'special_requests' => '特別リクエスト',
     'tour_program' => 'ツアー日程',
+    'gallery' => 'ギャラリー',
+    'videos' => '動画',
     'day_suffix' => '日目',
     'general_items' => '全般',
     'adult_short' => '大人',

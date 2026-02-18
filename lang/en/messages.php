@@ -145,6 +145,8 @@ return [
     'manager_notes' => 'Manager Notes',
     'special_requests' => 'Special Requests',
     'tour_program' => 'Tour Program',
+    'gallery' => 'Gallery',
+    'videos' => 'Videos',
     'day_suffix' => ' Day',
     'general_items' => 'General',
     'adult_short' => 'adults',

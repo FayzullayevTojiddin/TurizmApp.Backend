@@ -145,6 +145,8 @@ return [
     'manager_notes' => 'Yönetici Notu',
     'special_requests' => 'Özel İstekler',
     'tour_program' => 'Tur Programı',
+    'gallery' => 'Galeri',
+    'videos' => 'Videolar',
     'day_suffix' => '. Gün',
     'general_items' => 'Genel',
     'adult_short' => 'yetişkin',

@@ -159,6 +159,8 @@ return [
     'manager_notes' => 'प्रबंधक की टिप्पणी',
     'special_requests' => 'विशेष अनुरोध',
     'tour_program' => 'टूर कार्यक्रम',
+    'gallery' => 'गैलरी',
+    'videos' => 'वीडियो',
     'day_suffix' => 'वां दिन',
     'general_items' => 'सामान्य',
     'adult_short' => 'वयस्क',

@@ -159,6 +159,8 @@ return [
     'manager_notes' => 'یادداشت مدیر',
     'special_requests' => 'درخواست‌های ویژه',
     'tour_program' => 'برنامه تور',
+    'gallery' => 'گالری',
+    'videos' => 'ویدیوها',
     'day_suffix' => 'م روز',
     'general_items' => 'عمومی',
     'adult_short' => 'بزرگسال',

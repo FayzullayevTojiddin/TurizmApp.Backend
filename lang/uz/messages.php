@@ -160,6 +160,8 @@ return [
     'manager_notes' => 'Menejer izohi',
     'special_requests' => "Maxsus so'rovlar",
     'tour_program' => 'Sayohat dasturi',
+    'gallery' => 'Galereya',
+    'videos' => 'Videolar',
     'day_suffix' => '-kun',
     'general_items' => 'Umumiy',
     'adult_short' => 'katta',

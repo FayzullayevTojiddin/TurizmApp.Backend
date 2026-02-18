@@ -31,6 +31,40 @@
                         @endif
                     </div>
 
+                    {{-- Gallery --}}
+                    @if($tourPackage->gallery && count($tourPackage->gallery))
+                        <div>
+                            <h2 class="text-lg font-bold text-gray-900 mb-3 flex items-center gap-2">
+                                <i data-lucide="images" class="w-5 h-5"></i> {{ __('messages.gallery') }}
+                            </h2>
+                            <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                                @foreach($tourPackage->gallery as $image)
+                                    <a href="{{ asset('storage/' . $image) }}" target="_blank" class="aspect-[4/3] rounded-lg overflow-hidden bg-gray-100 block hover:opacity-90 transition">
+                                        <img src="{{ asset('storage/' . $image) }}" alt="{{ $tourPackage->translatedTitle() }}" class="w-full h-full object-cover">
+                                    </a>
+                                @endforeach
+                            </div>
+                        </div>
+                    @endif
+
+                    {{-- Videos --}}
+                    @if($tourPackage->videos && count($tourPackage->videos))
+                        <div>
+                            <h2 class="text-lg font-bold text-gray-900 mb-3 flex items-center gap-2">
+                                <i data-lucide="play-circle" class="w-5 h-5"></i> {{ __('messages.videos') }}
+                            </h2>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                @foreach($tourPackage->videos as $video)
+                                    <div class="rounded-lg overflow-hidden bg-black aspect-video">
+                                        <video controls class="w-full h-full object-contain" preload="metadata">
+                                            <source src="{{ asset('storage/' . $video) }}" type="video/mp4">
+                                        </video>
+                                    </div>
+                                @endforeach
+                            </div>
+                        </div>
+                    @endif
+
                     <div>
                         <h1 class="text-2xl lg:text-3xl font-bold text-gray-900 mb-3">{{ $tourPackage->translatedTitle() }}</h1>
                         @if($tourPackage->translatedDescription())

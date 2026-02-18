@@ -145,6 +145,8 @@ return [
     'manager_notes' => 'Комментарий менеджера',
     'special_requests' => 'Особые пожелания',
     'tour_program' => 'Программа тура',
+    'gallery' => 'Галерея',
+    'videos' => 'Видео',
     'day_suffix' => '-день',
     'general_items' => 'Общее',
     'adult_short' => 'взр.',

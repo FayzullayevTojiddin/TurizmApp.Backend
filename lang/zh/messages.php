@@ -145,6 +145,8 @@ return [
     'manager_notes' => '经理备注',
     'special_requests' => '特殊要求',
     'tour_program' => '行程安排',
+    'gallery' => '图片库',
+    'videos' => '视频',
     'day_suffix' => ' 天',
     'general_items' => '总览',
     'adult_short' => '成人',

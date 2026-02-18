@@ -145,6 +145,8 @@ return [
     'manager_notes' => '매니저 메모',
     'special_requests' => '특별 요청',
     'tour_program' => '투어 프로그램',
+    'gallery' => '갤러리',
+    'videos' => '동영상',
     'day_suffix' => '일차',
     'general_items' => '일반',
     'adult_short' => '성인',

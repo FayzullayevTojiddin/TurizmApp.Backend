@@ -145,6 +145,8 @@ return [
     'manager_notes' => 'ملاحظات المدير',
     'special_requests' => 'طلبات خاصة',
     'tour_program' => 'برنامج الجولة',
+    'gallery' => 'معرض الصور',
+    'videos' => 'فيديوهات',
     'day_suffix' => ' يوم',
     'general_items' => 'عام',
     'adult_short' => 'بالغ',
