@@ -47,7 +47,7 @@ class BookingForm
 
                 Select::make('tour_package_id')
                     ->label('Tur paketi')
-                    ->relationship('tourPackage', 'title')
+                    ->options(fn () => TourPackage::all()->pluck('title.uz', 'id'))
                     ->searchable()
                     ->preload()
                     ->required(),
