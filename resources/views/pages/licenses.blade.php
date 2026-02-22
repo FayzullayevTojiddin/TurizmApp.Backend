@@ -6,133 +6,44 @@
                 <p class="text-gray-500">{{ __('messages.licenses_desc') }}</p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
-                <div class="bg-white rounded-xl border border-gray-200 p-6">
-                    <div class="flex items-start gap-4">
-                        <div class="w-12 h-12 bg-emerald-50 rounded-lg flex items-center justify-center shrink-0">
-                            <i data-lucide="file-check" class="w-6 h-6 text-emerald-600"></i>
-                        </div>
-                        <div>
-                            <h3 class="font-semibold text-gray-900 mb-1">{{ __('messages.tourism_license') }}</h3>
-                            <p class="text-sm text-gray-500 mb-3">{{ __('messages.tourism_license_desc') }}</p>
-                            <div class="space-y-1.5 text-sm">
-                                <div class="flex items-center justify-between">
-                                    <span class="text-gray-500">{{ __('messages.license_number') }}</span>
-                                    <span class="font-medium text-gray-900">№ 12345</span>
-                                </div>
-                                <div class="flex items-center justify-between">
-                                    <span class="text-gray-500">{{ __('messages.issued_date') }}</span>
-                                    <span class="font-medium text-gray-900">15.03.2020</span>
-                                </div>
-                                <div class="flex items-center justify-between">
-                                    <span class="text-gray-500">{{ __('messages.valid_until') }}</span>
-                                    <span class="font-medium text-gray-900">{{ __('messages.unlimited') }}</span>
-                                </div>
-                                <div class="flex items-center justify-between">
-                                    <span class="text-gray-500">{{ __('messages.status') }}</span>
-                                    <span class="inline-flex items-center gap-1 text-emerald-700 font-medium">
-                                        <span class="w-1.5 h-1.5 bg-emerald-500 rounded-full"></span> {{ __('messages.active') }}
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+                {{-- Turizm litsenziyasi --}}
+                <div class="bg-white rounded-xl border border-gray-200 p-6 text-center">
+                    <div class="w-14 h-14 bg-emerald-50 rounded-lg flex items-center justify-center mx-auto mb-4">
+                        <i data-lucide="file-check" class="w-7 h-7 text-emerald-600"></i>
                     </div>
+                    <h3 class="font-semibold text-gray-900 mb-2">{{ __('messages.tourism_license') }}</h3>
+                    <p class="text-sm text-gray-500 mb-4">{{ __('messages.tourism_license_desc') }}</p>
+                    <a href="{{ asset('documents/turizm-litsenziya.pdf') }}" target="_blank"
+                       class="inline-flex items-center gap-2 text-sm font-medium text-emerald-700 bg-emerald-50 hover:bg-emerald-100 px-4 py-2 rounded-lg transition">
+                        <i data-lucide="eye" class="w-4 h-4"></i> {{ __('messages.view_document') }}
+                    </a>
                 </div>
 
-                <div class="bg-white rounded-xl border border-gray-200 p-6">
-                    <div class="flex items-start gap-4">
-                        <div class="w-12 h-12 bg-blue-50 rounded-lg flex items-center justify-center shrink-0">
-                            <i data-lucide="award" class="w-6 h-6 text-blue-600"></i>
-                        </div>
-                        <div>
-                            <h3 class="font-semibold text-gray-900 mb-1">{{ __('messages.iata_title') }}</h3>
-                            <p class="text-sm text-gray-500 mb-3">{{ __('messages.iata_desc') }}</p>
-                            <div class="space-y-1.5 text-sm">
-                                <div class="flex items-center justify-between">
-                                    <span class="text-gray-500">{{ __('messages.certificate_number') }}</span>
-                                    <span class="font-medium text-gray-900">IATA-2024-UZ-001</span>
-                                </div>
-                                <div class="flex items-center justify-between">
-                                    <span class="text-gray-500">{{ __('messages.issued_date') }}</span>
-                                    <span class="font-medium text-gray-900">10.01.2024</span>
-                                </div>
-                                <div class="flex items-center justify-between">
-                                    <span class="text-gray-500">{{ __('messages.valid_until') }}</span>
-                                    <span class="font-medium text-gray-900">10.01.2027</span>
-                                </div>
-                                <div class="flex items-center justify-between">
-                                    <span class="text-gray-500">{{ __('messages.status') }}</span>
-                                    <span class="inline-flex items-center gap-1 text-emerald-700 font-medium">
-                                        <span class="w-1.5 h-1.5 bg-emerald-500 rounded-full"></span> {{ __('messages.active') }}
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
+                {{-- Yo'l harakati litsenziyasi --}}
+                <div class="bg-white rounded-xl border border-gray-200 p-6 text-center">
+                    <div class="w-14 h-14 bg-blue-50 rounded-lg flex items-center justify-center mx-auto mb-4">
+                        <i data-lucide="bus" class="w-7 h-7 text-blue-600"></i>
                     </div>
+                    <h3 class="font-semibold text-gray-900 mb-2">{{ __('messages.transport_license') }}</h3>
+                    <p class="text-sm text-gray-500 mb-4">{{ __('messages.transport_license_desc') }}</p>
+                    <a href="{{ asset('documents/yul-harakati-litsenziya.pdf') }}" target="_blank"
+                       class="inline-flex items-center gap-2 text-sm font-medium text-blue-700 bg-blue-50 hover:bg-blue-100 px-4 py-2 rounded-lg transition">
+                        <i data-lucide="eye" class="w-4 h-4"></i> {{ __('messages.view_document') }}
+                    </a>
                 </div>
 
-                <div class="bg-white rounded-xl border border-gray-200 p-6">
-                    <div class="flex items-start gap-4">
-                        <div class="w-12 h-12 bg-violet-50 rounded-lg flex items-center justify-center shrink-0">
-                            <i data-lucide="shield-check" class="w-6 h-6 text-violet-600"></i>
-                        </div>
-                        <div>
-                            <h3 class="font-semibold text-gray-900 mb-1">{{ __('messages.insurance_title') }}</h3>
-                            <p class="text-sm text-gray-500 mb-3">{{ __('messages.insurance_desc') }}</p>
-                            <div class="space-y-1.5 text-sm">
-                                <div class="flex items-center justify-between">
-                                    <span class="text-gray-500">{{ __('messages.contract_number') }}</span>
-                                    <span class="font-medium text-gray-900">SA-2023/456</span>
-                                </div>
-                                <div class="flex items-center justify-between">
-                                    <span class="text-gray-500">{{ __('messages.issued_date') }}</span>
-                                    <span class="font-medium text-gray-900">01.06.2023</span>
-                                </div>
-                                <div class="flex items-center justify-between">
-                                    <span class="text-gray-500">{{ __('messages.valid_until') }}</span>
-                                    <span class="font-medium text-gray-900">01.06.2026</span>
-                                </div>
-                                <div class="flex items-center justify-between">
-                                    <span class="text-gray-500">{{ __('messages.status') }}</span>
-                                    <span class="inline-flex items-center gap-1 text-emerald-700 font-medium">
-                                        <span class="w-1.5 h-1.5 bg-emerald-500 rounded-full"></span> {{ __('messages.active') }}
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
+                {{-- Guvohnoma --}}
+                <div class="bg-white rounded-xl border border-gray-200 p-6 text-center">
+                    <div class="w-14 h-14 bg-amber-50 rounded-lg flex items-center justify-center mx-auto mb-4">
+                        <i data-lucide="award" class="w-7 h-7 text-amber-600"></i>
                     </div>
-                </div>
-
-                <div class="bg-white rounded-xl border border-gray-200 p-6">
-                    <div class="flex items-start gap-4">
-                        <div class="w-12 h-12 bg-amber-50 rounded-lg flex items-center justify-center shrink-0">
-                            <i data-lucide="stamp" class="w-6 h-6 text-amber-600"></i>
-                        </div>
-                        <div>
-                            <h3 class="font-semibold text-gray-900 mb-1">{{ __('messages.state_registration') }}</h3>
-                            <p class="text-sm text-gray-500 mb-3">{{ __('messages.state_registration_desc') }}</p>
-                            <div class="space-y-1.5 text-sm">
-                                <div class="flex items-center justify-between">
-                                    <span class="text-gray-500">{{ __('messages.tin') }}</span>
-                                    <span class="font-medium text-gray-900">301 234 567</span>
-                                </div>
-                                <div class="flex items-center justify-between">
-                                    <span class="text-gray-500">{{ __('messages.registration_date') }}</span>
-                                    <span class="font-medium text-gray-900">20.01.2019</span>
-                                </div>
-                                <div class="flex items-center justify-between">
-                                    <span class="text-gray-500">{{ __('messages.org_form') }}</span>
-                                    <span class="font-medium text-gray-900">MChJ</span>
-                                </div>
-                                <div class="flex items-center justify-between">
-                                    <span class="text-gray-500">{{ __('messages.status') }}</span>
-                                    <span class="inline-flex items-center gap-1 text-emerald-700 font-medium">
-                                        <span class="w-1.5 h-1.5 bg-emerald-500 rounded-full"></span> {{ __('messages.active') }}
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <h3 class="font-semibold text-gray-900 mb-2">{{ __('messages.state_registration') }}</h3>
+                    <p class="text-sm text-gray-500 mb-4">{{ __('messages.state_registration_desc') }}</p>
+                    <a href="{{ asset('documents/guvohnoma.pdf') }}" target="_blank"
+                       class="inline-flex items-center gap-2 text-sm font-medium text-amber-700 bg-amber-50 hover:bg-amber-100 px-4 py-2 rounded-lg transition">
+                        <i data-lucide="eye" class="w-4 h-4"></i> {{ __('messages.view_document') }}
+                    </a>
                 </div>
             </div>
 

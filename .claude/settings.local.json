@@ -10,7 +10,11 @@
       "Bash(php artisan:*)",
       "Bash(del \"C:\\\\Users\\\\fayzu\\\\Desktop\\\\TurizmApp\\\\TurizmApp.Backend\\\\database\\\\migrations\\\\2026_02_17_040052_remove_start_date_and_end_date_from_tour_packages_table.php\")",
       "Bash(ls:*)",
-      "Bash(dir:*)"
+      "Bash(dir:*)",
+      "Bash(test:*)",
+      "Bash(php -v:*)",
+      "Bash(/tmp/check_all.php:*)",
+      "Bash(php:*)"
     ]
   }
 }
