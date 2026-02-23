@@ -43,7 +43,7 @@
                     </li>
                     <li class="flex items-center gap-2.5">
                         <i data-lucide="phone" class="w-4 h-4 text-blue-400 shrink-0"></i>
-                        <a href="tel:+998901234567" class="text-sm hover:text-white transition">+998 99 571 24 63</a>
+                        <a href="tel:+998995712463" class="text-sm hover:text-white transition">+998 99 571 24 63</a>
                     </li>
                     <li class="flex items-center gap-2.5">
                         <i data-lucide="mail" class="w-4 h-4 text-blue-400 shrink-0"></i>

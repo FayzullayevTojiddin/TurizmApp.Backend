@@ -18,7 +18,7 @@
                         <i data-lucide="phone" class="w-5 h-5 text-blue-600"></i>
                     </div>
                     <h3 class="text-sm font-semibold text-gray-900 mb-1">{{ __('messages.phone') }}</h3>
-                    <a href="tel:+998901234567" class="text-sm text-blue-600 hover:underline">+998 90 123 45 67</a>
+                    <a href="tel:+998995712463" class="text-sm text-blue-600 hover:underline">+998 99 571 24 63</a>
                 </div>
 
                 <div class="bg-white rounded-xl border border-gray-200 p-5 text-center">
@@ -26,7 +26,7 @@
                         <i data-lucide="mail" class="w-5 h-5 text-blue-600"></i>
                     </div>
                     <h3 class="text-sm font-semibold text-gray-900 mb-1">{{ __('messages.email') }}</h3>
-                    <a href="mailto:info@turizmapp.uz" class="text-sm text-blue-600 hover:underline">info@turizmapp.uz</a>
+                    <a href="mailto:Alalhaq1@mail.ru" class="text-sm text-blue-600 hover:underline">Alalhaq1@mail.ru</a>
                 </div>
 
                 <div class="bg-white rounded-xl border border-gray-200 p-5 text-center">
@@ -34,7 +34,7 @@
                         <i data-lucide="map-pin" class="w-5 h-5 text-blue-600"></i>
                     </div>
                     <h3 class="text-sm font-semibold text-gray-900 mb-1">{{ __('messages.address') }}</h3>
-                    <p class="text-sm text-gray-500">Toshkent sh., Amir Temur ko'chasi 1</p>
+                    <p class="text-sm text-gray-500">Surxondaryo viloyati, Uzun tumani</p>
                 </div>
             </div>
 
