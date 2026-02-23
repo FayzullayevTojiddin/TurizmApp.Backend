@@ -52,10 +52,13 @@
                 </ul>
 
                 <div class="flex items-center gap-2 mt-5">
-                    <a href="https://www.instagram.com/skytravel.uz1/" class="w-9 h-9 flex items-center justify-center rounded-lg bg-gray-800 hover:bg-pink-600 transition">
+                    <a href="https://t.me/afrod991" target="_blank" class="w-9 h-9 flex items-center justify-center rounded-lg bg-gray-800 hover:bg-blue-500 transition">
+                        <i data-lucide="send" class="w-4 h-4"></i>
+                    </a>
+                    <a href="https://www.instagram.com/skytravel.uz1/" target="_blank" class="w-9 h-9 flex items-center justify-center rounded-lg bg-gray-800 hover:bg-pink-600 transition">
                         <i data-lucide="instagram" class="w-4 h-4"></i>
                     </a>
-                    <a href="https://www.youtube.com/@sky-travel.uz1" class="w-9 h-9 flex items-center justify-center rounded-lg bg-gray-800 hover:bg-red-600 transition">
+                    <a href="https://www.youtube.com/@sky-travel.uz1" target="_blank" class="w-9 h-9 flex items-center justify-center rounded-lg bg-gray-800 hover:bg-red-600 transition">
                         <i data-lucide="youtube" class="w-4 h-4"></i>
                     </a>
                 </div>
