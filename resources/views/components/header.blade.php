@@ -34,6 +34,13 @@
             </nav>
 
             <div class="hidden md:flex items-center gap-2">
+                {{-- Sky Transfer --}}
+                <a href="https://t.me/Sky_Transfer_Bot" target="_blank"
+                   class="flex items-center gap-1.5 px-3.5 py-2 text-sm font-medium text-white bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 rounded-lg transition shadow-sm">
+                    <i data-lucide="car" class="w-4 h-4"></i>
+                    Sky Transfer
+                </a>
+
                 {{-- Til tanlash --}}
                 <div x-data="{ open: false }" class="relative">
                     <button @click="open = !open" class="flex items-center gap-1.5 px-3 py-2 text-sm font-medium text-gray-600 hover:text-gray-900 rounded-lg hover:bg-gray-100 transition">
@@ -135,6 +142,12 @@
             </a>
             <a href="{{ route('contact') }}" class="flex items-center gap-2.5 px-3 py-2.5 text-sm font-medium rounded-lg {{ request()->routeIs('contact') ? 'text-blue-600 bg-blue-50' : 'text-gray-600 hover:bg-gray-100' }}">
                 <i data-lucide="mail" class="w-4 h-4"></i> {{ __('messages.contact') }}
+            </a>
+
+            {{-- Sky Transfer --}}
+            <a href="https://t.me/Sky_Transfer_Bot" target="_blank"
+               class="flex items-center gap-2.5 px-3 py-2.5 text-sm font-medium text-white bg-gradient-to-r from-blue-500 to-cyan-500 rounded-lg">
+                <i data-lucide="car" class="w-4 h-4"></i> Sky Transfer
             </a>
 
             {{-- Mobile til tanlash --}}
